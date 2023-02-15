@@ -79,6 +79,17 @@ function App() {
       })
   }, [])
 
+  useEffect(() => {
+    tokenCheck()
+  }, [loggedIn])
+
+  useEffect(() => {
+    if (loggedIn) {
+      navigate("/")
+      return
+    }
+  }, [loggedIn, navigate])
+
   function handleCardLike(card) {
     const isLiked = card.likes.some(i => i._id === currentUser._id)
     api.changeLikeCardStatus(card._id, isLiked)
@@ -204,6 +215,7 @@ function App() {
             />} />
             <Route path="*" element={loggedIn ? <Navigate to="/" /> : <Navigate to="/signin" />} />
           </Routes>
+
           {loggedIn ? <Footer /> : null}
 
           <EditProfilePopup

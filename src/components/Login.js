@@ -41,7 +41,7 @@ function Login(props) {
                                 value={state.password}
                                 onChange={handleChange}
                                 className="auth__input"
-                                tyoe="password"
+                                type="password"
                                 name="password"
                                 placeholder="Пароль"
                             />
